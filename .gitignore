@@ -14,3 +14,10 @@ staticfiles/
 .idea/
 
 .DS_Store
+ 
+# React
+frontend/node_modules/
+frontend/dist/
+
+# Environment
+frontend/.env
