@@ -12,11 +12,13 @@ class FavoriteSerializer(serializers.ModelSerializer):
         fields = ['id', 'aircraft', 'aircraft_name', 'manufacturer', 'country', 'generation', 'created_at']
         read_only_fields = ['id', 'created_at']
 
-    def create(self, validated_data):
+    def validate(self, attrs):
         user = self.context['request'].user
-        aircraft = validated_data['aircraft']
-        
+        aircraft = attrs.get('aircraft')
         if Favorite.objects.filter(user=user, aircraft=aircraft).exists():
             raise serializers.ValidationError("Aircraft is already in favorites")
-            
+        return attrs
+
+    def create(self, validated_data):
+        user = self.context['request'].user
         return Favorite.objects.create(user=user, **validated_data)

@@ -10,7 +10,9 @@ class Favorite(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('user', 'aircraft')
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'aircraft'], name='unique_user_aircraft_favorite')
+        ]
         ordering = ['-created_at']
 
     def __str__(self):
