@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import AircraftCard from '../components/Navbar'; // Wait, let's import the correct card
-import AircraftCardActual from '../components/AircraftCard';
+import AircraftCard from '../components/AircraftCard';
 
 const MOCK_FAVORITE_AIRCRAFT = [
   {
@@ -54,7 +53,7 @@ const Favorites = () => {
       {favorites.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {favorites.map((aircraft) => (
-            <AircraftCardActual 
+            <AircraftCard 
               key={aircraft.id} 
               aircraft={aircraft}
               isFavorited={true}
