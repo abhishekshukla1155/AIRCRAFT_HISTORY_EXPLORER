@@ -6,9 +6,9 @@ import api from '../api/api';
 export const login = async (username, password) => {
   const response = await api.post('/accounts/login/', { username, password });
   if (response.data && response.data.access) {
-    localStorage.setItem('access_token', response.data.access);
+    localStorage.setItem('access', response.data.access);
     if (response.data.refresh) {
-      localStorage.setItem('refresh_token', response.data.refresh);
+      localStorage.setItem('refresh', response.data.refresh);
     }
   }
   return response.data;
@@ -26,8 +26,8 @@ export const register = async (userData) => {
  * Clear JWT tokens from localStorage to logout the user.
  */
 export const logout = () => {
-  localStorage.removeItem('access_token');
-  localStorage.removeItem('refresh_token');
+  localStorage.removeItem('access');
+  localStorage.removeItem('refresh');
 };
 
 /**

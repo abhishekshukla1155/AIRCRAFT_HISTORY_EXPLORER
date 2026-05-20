@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const checkAuth = async () => {
-    const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem('access');
     if (token) {
       try {
         const userData = await getCurrentUser();
