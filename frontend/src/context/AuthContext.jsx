@@ -1,81 +1,65 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
+import { getCurrentUser, login as apiLogin, logout as apiLogout } from '../services/authService';
 
-const AuthContext = createContext(null);
+export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Check if token exists on initial mount to restore user session
+  const checkAuth = async () => {
     const token = localStorage.getItem('access_token');
-    const storedUser = localStorage.getItem('user');
-    if (token && storedUser) {
+    if (token) {
       try {
-        setUser(JSON.parse(storedUser));
-      } catch (e) {
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('user');
+        const userData = await getCurrentUser();
+        setUser(userData);
+      } catch (error) {
+        console.error("Failed to authenticate user with stored token", error);
+        apiLogout();
+        setUser(null);
       }
+    } else {
+      setUser(null);
     }
     setLoading(false);
+  };
+
+  useEffect(() => {
+    checkAuth();
   }, []);
 
   const login = async (username, password) => {
-    setLoading(true);
+    const data = await apiLogin(username, password);
     try {
-      // Logic for service call will go here.
-      // For baseline, mock successful login:
-      const mockUser = { id: 1, username, email: `${username}@example.com` };
-      localStorage.setItem('access_token', 'mock_jwt_token');
-      localStorage.setItem('user', JSON.stringify(mockUser));
-      setUser(mockUser);
-      return { success: true };
-    } catch (error) {
-      return { success: false, error: error.message };
-    } finally {
-      setLoading(false);
+      const userData = await getCurrentUser();
+      setUser(userData);
+    } catch (err) {
+      console.error("Failed to load user details after login", err);
     }
-  };
-
-  const register = async (username, email, password) => {
-    setLoading(true);
-    try {
-      // Logic for service call will go here.
-      const mockUser = { id: 1, username, email };
-      localStorage.setItem('access_token', 'mock_jwt_token');
-      localStorage.setItem('user', JSON.stringify(mockUser));
-      setUser(mockUser);
-      return { success: true };
-    } catch (error) {
-      return { success: false, error: error.message };
-    } finally {
-      setLoading(false);
-    }
+    return data;
   };
 
   const logout = () => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('user');
+    apiLogout();
     setUser(null);
   };
 
-  const value = {
-    user,
-    loading,
-    login,
-    register,
-    logout,
-    isAuthenticated: !!user,
-  };
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider 
+      value={{ 
+        user, 
+        setUser, 
+        loading, 
+        login, 
+        logout, 
+        isAuthenticated: !!user 
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
+  return useContext(AuthContext);
 };

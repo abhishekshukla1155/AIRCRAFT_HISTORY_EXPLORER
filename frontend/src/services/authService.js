@@ -1,26 +1,39 @@
-import axiosInstance from '../api/axios';
+import api from '../api/api';
 
-const authService = {
-  login: async (username, password) => {
-    // API endpoint will correspond to JWT obtain endpoint: /token/ or /auth/login/
-    const response = await axiosInstance.post('/auth/login/', { username, password });
-    return response.data;
-  },
-
-  register: async (username, email, password) => {
-    const response = await axiosInstance.post('/auth/register/', { username, email, password });
-    return response.data;
-  },
-
-  logout: () => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('user');
-  },
-
-  getCurrentUser: () => {
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
+/**
+ * Perform login request and store JWT token in localStorage.
+ */
+export const login = async (username, password) => {
+  const response = await api.post('/accounts/login/', { username, password });
+  if (response.data && response.data.access) {
+    localStorage.setItem('access_token', response.data.access);
+    if (response.data.refresh) {
+      localStorage.setItem('refresh_token', response.data.refresh);
+    }
   }
+  return response.data;
 };
 
-export default authService;
+/**
+ * Register a new user account.
+ */
+export const register = async (userData) => {
+  const response = await api.post('/accounts/register/', userData);
+  return response.data;
+};
+
+/**
+ * Clear JWT tokens from localStorage to logout the user.
+ */
+export const logout = () => {
+  localStorage.removeItem('access_token');
+  localStorage.removeItem('refresh_token');
+};
+
+/**
+ * Get currently authenticated user details.
+ */
+export const getCurrentUser = async () => {
+  const response = await api.get('/accounts/me/');
+  return response.data;
+};

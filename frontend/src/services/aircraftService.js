@@ -1,26 +1,26 @@
-import axiosInstance from '../api/axios';
+import api from '../api/api';
 
-const aircraftService = {
-  // Get paginated list of aircraft with search/filter queries
-  getAircraftList: async (params = {}) => {
-    const response = await axiosInstance.get('/aircraft/', { params });
-    return response.data;
-  },
-
-  // Get specific aircraft details along with historical timeline
-  getAircraftDetails: async (id) => {
-    const response = await axiosInstance.get(`/aircraft/${id}/`);
-    return response.data;
-  },
-
-  // Compare multiple aircraft side-by-side
-  compareAircraft: async (ids) => {
-    // Expects query parameter like ?ids=1,2,3
-    const response = await axiosInstance.get('/compare/', {
-      params: { ids: ids.join(',') }
-    });
-    return response.data;
-  }
+/**
+ * Fetch list of aircrafts from the backend.
+ * Supports filtering/search parameters passed via params.
+ */
+export const getAircraftList = async (params = {}) => {
+  const response = await api.get('/aircraft/', { params });
+  return response.data;
 };
 
-export default aircraftService;
+/**
+ * Fetch detailed information for a single aircraft.
+ */
+export const getAircraftDetail = async (id) => {
+  const response = await api.get(`/aircraft/${id}/`);
+  return response.data;
+};
+
+/**
+ * Fetch historical eras for filtering.
+ */
+export const getEras = async () => {
+  const response = await api.get('/aircraft/eras/');
+  return response.data;
+};

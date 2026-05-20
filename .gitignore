@@ -21,3 +21,5 @@ frontend/dist/
 
 # Environment
 frontend/.env
+
+frontend/.vite/
