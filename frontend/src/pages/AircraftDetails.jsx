@@ -34,6 +34,8 @@ const AircraftDetails = () => {
   // For this foundation phase, use the pre-populated mock details
   const aircraft = MOCK_AIRCRAFT_DETAILS;
 
+  if (!aircraft) return null;
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col gap-12 font-sans text-slate-300">
       

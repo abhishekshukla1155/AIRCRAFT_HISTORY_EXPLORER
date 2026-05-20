@@ -32,6 +32,8 @@ const MOCK_COMPARISON_DATA = [
 ];
 
 const Compare = () => {
+  if (!MOCK_COMPARISON_DATA) return null;
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col gap-10 font-sans">
       

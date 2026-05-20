@@ -39,6 +39,8 @@ const Favorites = () => {
     );
   };
 
+  if (!favorites) return null;
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col gap-10 font-sans">
       

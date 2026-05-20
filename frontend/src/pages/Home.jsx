@@ -47,6 +47,8 @@ const MOCK_AIRCRAFT = [
 ];
 
 const Home = () => {
+  if (!MOCK_AIRCRAFT) return null;
+
   const [searchQuery, setSearchQuery] = useState('');
   const [filters, setFilters] = useState({});
   const [comparingIds, setComparingIds] = useState([]);

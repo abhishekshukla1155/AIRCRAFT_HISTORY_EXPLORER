@@ -11,7 +11,11 @@ import AircraftDetails from './pages/AircraftDetails';
 
 // Simple ProtectedRoute component for authenticated views (like Favorites)
 const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, loading } = useAuth();
+  const auth = useAuth();
+  
+  if (!auth) return null;
+  
+  const { isAuthenticated, loading } = auth;
 
   if (loading) {
     return (
