@@ -27,7 +27,11 @@ class Aircraft(models.Model):
     # Era relationship
     eras = models.ManyToManyField(Era, related_name='aircraft', blank=True)
 
-    image = models.ImageField(upload_to='aircraft_images/', null=True, blank=True)
+    image = models.ImageField(
+        upload_to='aircraft/',
+        blank=True,
+        null=True
+    )
     model_file = models.FileField(upload_to='aircraft_models/', null=True, blank=True, help_text="3D model file (e.g. .gltf, .obj)")
     
     created_at = models.DateTimeField(auto_now_add=True)

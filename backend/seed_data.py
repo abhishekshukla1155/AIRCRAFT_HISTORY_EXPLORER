@@ -38,7 +38,8 @@ def seed():
         engine_type="2x Pratt & Whitney F119-PW-100 turbofans",
         generation="5th Generation",
         war_usage="Syrian Civil War",
-        description="The F-22 Raptor is a fifth-generation, single-seat, twin-engine, all-weather stealth tactical fighter aircraft."
+        description="The F-22 Raptor is a fifth-generation, single-seat, twin-engine, all-weather stealth tactical fighter aircraft.",
+        image="aircraft/f22.jpg"
     )
     f22.eras.add(modern)
 
@@ -55,7 +56,8 @@ def seed():
         engine_type="2x General Electric F110-GE-400 afterburning turbofans",
         generation="4th Generation",
         war_usage="Vietnam War (evacuation), Operation Desert Storm",
-        description="The F-14 Tomcat is an American supersonic, twin-engine, two-seat, twin-tail, variable-sweep wing fighter aircraft."
+        description="The F-14 Tomcat is an American supersonic, twin-engine, two-seat, twin-tail, variable-sweep wing fighter aircraft.",
+        image="aircraft/f14.jpg"
     )
     f14.eras.add(cold_war)
 
@@ -72,7 +74,8 @@ def seed():
         engine_type="2x Pratt & Whitney J58 continuous-bleed afterburning turbojets",
         generation="3rd Generation",
         war_usage="Vietnam War, Cold War reconnaissance",
-        description="The Lockheed SR-71 Blackbird is a long-range, high-altitude, Mach 3+ strategic reconnaissance aircraft."
+        description="The Lockheed SR-71 Blackbird is a long-range, high-altitude, Mach 3+ strategic reconnaissance aircraft.",
+        image="aircraft/sr71.jpg"
     )
     sr71.eras.add(cold_war)
 
@@ -89,7 +92,8 @@ def seed():
         engine_type="Rolls-Royce Merlin liquid-cooled V12",
         generation="Propeller Era",
         war_usage="World War II",
-        description="The Supermarine Spitfire is a British single-seat fighter aircraft that was used by the Royal Air Force and other Allied countries before, during, and after World War II."
+        description="The Supermarine Spitfire is a British single-seat fighter aircraft that was used by the Royal Air Force and other Allied countries before, during, and after World War II.",
+        image="aircraft/spitfire.jpg"
     )
     spitfire.eras.add(ww2)
 
@@ -106,7 +110,8 @@ def seed():
         engine_type="2x Saturn AL-41F1 afterburning turbofans",
         generation="5th Generation",
         war_usage="Syrian Civil War, Russo-Ukrainian War",
-        description="The Sukhoi Su-57 is a twin-engine stealth multirole fighter aircraft developed by Sukhoi."
+        description="The Sukhoi Su-57 is a twin-engine stealth multirole fighter aircraft developed by Sukhoi.",
+        image="aircraft/su57.jpg"
     )
     su57.eras.add(modern)
 
@@ -123,7 +128,8 @@ def seed():
         engine_type="4x Rolls-Royce/Snecma Olympus 593 Mk 610 turbojets with reheat",
         generation="Supersonic Transport",
         war_usage="None",
-        description="The Concorde is a Franco-British supersonic passenger airliner that operated from 1976 until 2003."
+        description="The Concorde is a Franco-British supersonic passenger airliner that operated from 1976 until 2003.",
+        image="aircraft/concorde.jpg"
     )
     concorde.eras.add(cold_war, modern)
 
@@ -140,7 +146,8 @@ def seed():
         engine_type="4x Turbofans (P&W, GE, or Rolls-Royce)",
         generation="Jet Age",
         war_usage="None",
-        description="The Boeing 747 is a large, long-range wide-body airliner manufactured by Boeing Commercial Airplanes in the United States."
+        description="The Boeing 747 is a large, long-range wide-body airliner manufactured by Boeing Commercial Airplanes in the United States.",
+        image="aircraft/boeing747.jpg"
     )
     b747.eras.add(cold_war, modern)
 
@@ -157,7 +164,8 @@ def seed():
         engine_type="Straight-4 water-cooled, 12 hp",
         generation="Pioneer Era",
         war_usage="None",
-        description="The Wright Flyer was the first successful heavier-than-air powered aircraft, designed and built by the Wright brothers."
+        description="The Wright Flyer was the first successful heavier-than-air powered aircraft, designed and built by the Wright brothers.",
+        image="aircraft/wright.jpg"
     )
 
     print("Creating recommendations...")
