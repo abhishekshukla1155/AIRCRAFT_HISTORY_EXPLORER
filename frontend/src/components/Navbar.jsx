@@ -44,6 +44,12 @@ export default function Navbar() {
         >
           Compare
         </Link>
+        <Link 
+          to="/timeline" 
+          className={`hover:text-white transition-all ${isActive('/timeline') ? 'text-cyan-400 font-semibold' : ''}`}
+        >
+          Timeline
+        </Link>
         {user && (
           <Link 
             to="/favorites" 

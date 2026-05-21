@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import Compare from './pages/Compare';
 import Favorites from './pages/Favorites';
 import AircraftDetails from './pages/AircraftDetails';
+import Timeline from './pages/Timeline';
 
 // Simple ProtectedRoute component for authenticated views (like Favorites)
 const ProtectedRoute = ({ children }) => {
@@ -50,6 +51,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/compare" element={<Compare />} />
               <Route path="/aircraft/:id" element={<AircraftDetails />} />
+              <Route path="/timeline" element={<Timeline />} />
 
               {/* Protected Routes */}
               <Route 

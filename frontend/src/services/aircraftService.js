@@ -24,3 +24,11 @@ export const getEras = async () => {
   const response = await api.get('/aircraft/eras/');
   return response.data;
 };
+
+/**
+ * Fetch timeline aircraft data from backend.
+ */
+export const getTimeline = async () => {
+  const response = await api.get('/timeline/');
+  return response.data;
+};
