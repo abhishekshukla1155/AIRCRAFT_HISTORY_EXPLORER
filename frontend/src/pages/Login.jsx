@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import aeroLogo from '../assets/aero-logo.svg';
+
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -29,9 +31,26 @@ export default function Login() {
       <div className="w-full max-w-[420px] bg-[#0c162d]/70 backdrop-blur-md rounded-2xl border border-slate-800/80 p-8 shadow-2xl flex flex-col gap-6">
         
         {/* Header */}
-        <div className="text-center">
-          <h2 className="text-2xl font-extrabold text-white tracking-wide">Welcome Back</h2>
-          <p className="text-xs text-slate-400 mt-1">Sign in to your AeroChronicles account</p>
+        <div className="flex flex-col items-center text-center gap-3">
+          <Link to="/" className="group flex flex-col items-center gap-2">
+            <img 
+              src={aeroLogo} 
+              alt="AeroChronicles Logo" 
+              className="w-14 h-14 group-hover:rotate-6 transition-transform duration-300 filter drop-shadow-[0_0_8px_rgba(6,182,212,0.3)]"
+            />
+            <div className="flex flex-col items-center">
+              <span className="text-xl font-black tracking-wider text-white group-hover:text-cyan-400 transition-colors duration-300">
+                AeroChronicles
+              </span>
+              <span className="text-[9px] text-cyan-400 font-bold tracking-widest uppercase mt-0.5">
+                Aviation History Explorer
+              </span>
+            </div>
+          </Link>
+          <div className="mt-2">
+            <h2 className="text-lg font-bold text-white/90">Welcome Back</h2>
+            <p className="text-xs text-slate-400 mt-0.5">Sign in to your AeroChronicles account</p>
+          </div>
         </div>
 
         {/* Error Alert */}

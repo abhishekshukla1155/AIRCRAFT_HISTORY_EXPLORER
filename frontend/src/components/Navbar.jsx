@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import aeroLogo from '../assets/aero-logo.svg';
 
 export default function Navbar() {
   const { user, logout } = useContext(AuthContext);
@@ -12,8 +13,20 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 w-full border-b border-slate-800/80 bg-[#0b1329]/90 backdrop-blur-md px-6 py-4 flex items-center justify-between">
       {/* Logo (Left) */}
       <div className="flex items-center">
-        <Link to="/" className="text-xl font-extrabold tracking-wider text-white hover:text-cyan-400 transition-all flex items-center gap-2">
-          <span>✈️</span> AeroChronicles
+        <Link to="/" className="group flex items-center gap-3 transition-all duration-300">
+          <img 
+            src={aeroLogo} 
+            alt="AeroChronicles Logo" 
+            className="w-10 h-10 group-hover:rotate-6 transition-transform duration-300"
+          />
+          <div className="flex flex-col">
+            <span className="text-lg font-extrabold tracking-wider text-white group-hover:text-cyan-400 transition-colors duration-300 leading-none">
+              AeroChronicles
+            </span>
+            <span className="text-[9px] text-cyan-400 font-bold tracking-widest uppercase mt-1 leading-none">
+              Aviation History Explorer
+            </span>
+          </div>
         </Link>
       </div>
 
