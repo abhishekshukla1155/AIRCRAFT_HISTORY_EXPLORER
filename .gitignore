@@ -1,5 +1,6 @@
 __pycache__/
 *.py[cod]
+*.pyc
 
 venv/
 backend/venv/
@@ -15,11 +16,10 @@ staticfiles/
 
 .DS_Store
  
-# React
-frontend/node_modules/
-frontend/dist/
+# Node / React
+node_modules/
+dist/
+.vite/
 
 # Environment
 frontend/.env
-
-frontend/.vite/
