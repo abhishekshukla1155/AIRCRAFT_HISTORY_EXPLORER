@@ -154,6 +154,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://aircraft-history-explorer.vercel.app",
+    "https://aircraft-history-e-git-220b67-abhishekshukla7423-6909s-projects.vercel.app/"
 ]
 
 REST_FRAMEWORK = {
