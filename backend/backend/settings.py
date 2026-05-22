@@ -34,6 +34,8 @@ DEBUG = os.environ.get(
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
+    ".onrender.com",
+    ".vercel.app",
 ]
 
 
@@ -151,6 +153,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://aircraft-history-explorer.vercel.app",
 ]
 
 REST_FRAMEWORK = {
