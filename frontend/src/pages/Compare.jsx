@@ -12,9 +12,7 @@ const AircraftCompareCard = ({ aircraft, slotNumber }) => {
     );
   }
 
-  const imageUrl = aircraft.image 
-    ? (aircraft.image.startsWith('http') ? aircraft.image : `http://127.0.0.1:8000${aircraft.image}`)
-    : 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05';
+  const imageUrl = aircraft.image ? (aircraft.image.startsWith('http') ? aircraft.image : `${import.meta.env.VITE_API_URL}${aircraft.image}`) : 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05';
 
   return (
     <div className="flex flex-col rounded-2xl border border-slate-800 bg-[#0c162d]/60 overflow-hidden shadow-lg hover:border-slate-700/60 transition-colors duration-300">

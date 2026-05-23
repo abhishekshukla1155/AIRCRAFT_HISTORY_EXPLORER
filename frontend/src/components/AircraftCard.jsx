@@ -2,9 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function AircraftCard({ aircraft, isFavorite, onToggleFavorite }) {
-  const imageUrl = aircraft.image 
-    ? (aircraft.image.startsWith('http') ? aircraft.image : `http://127.0.0.1:8000${aircraft.image}`)
-    : 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05';
+  const getImageUrl = (imagePath) => {
+    if (!imagePath) return 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05';
+    if (imagePath.startsWith('http')) return imagePath;
+    return `${import.meta.env.VITE_API_URL}${imagePath}`;
+  };
+
+  const imageUrl = getImageUrl(aircraft.image);
 
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-slate-800 bg-[#0c162d]/60 hover:bg-[#0e1b38]/80 hover:border-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/5 transition-all duration-300">

@@ -140,7 +140,7 @@ export default function Timeline() {
   const getImageUrl = (imagePath) => {
     if (!imagePath) return 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800';
     if (imagePath.startsWith('http')) return imagePath;
-    return `http://127.0.0.1:8000${imagePath}`;
+    return `${import.meta.env.VITE_API_URL}${imagePath}`;
   };
 
   return (
