@@ -12,17 +12,17 @@ export default function AircraftCard({ aircraft, isFavorite, onToggleFavorite })
 
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-slate-800 bg-[#0c162d]/60 hover:bg-[#0e1b38]/80 hover:border-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/5 transition-all duration-300">
-      {/* Aircraft Image and Overlay Actions */}
+      {/* Aircraft Image and Overlay Action */}
       <div className="relative h-48 w-full overflow-hidden bg-slate-950">
-        <img 
-          src={imageUrl} 
-          alt={aircraft.name} 
+        <img
+          src={imageUrl}
+          alt={aircraft.name}
           className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
-        
+
         {/* Favorite Button (Top-Right Overlay) */}
-        <button 
+        <button
           onClick={() => onToggleFavorite(aircraft.id)}
           className="absolute top-3 right-3 p-2 rounded-full backdrop-blur-md bg-slate-950/60 border border-slate-700/50 hover:scale-110 active:scale-95 transition-all duration-200"
           aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
@@ -63,7 +63,7 @@ export default function AircraftCard({ aircraft, isFavorite, onToggleFavorite })
         </div>
 
         {/* Explore Timeline Action */}
-        <Link 
+        <Link
           to={`/aircraft/${aircraft.id}`}
           className="mt-auto w-full inline-flex items-center justify-center gap-2 rounded-lg py-2.5 px-4 text-xs font-bold bg-slate-800/80 hover:bg-cyan-500 hover:text-slate-950 text-slate-200 transition-all shadow-sm border border-slate-700/50"
         >
