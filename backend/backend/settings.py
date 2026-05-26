@@ -152,7 +152,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 CORS_ALLOWED_ORIGINS = [
+    "http://localhost",
+    "http://localhost:80",
     "http://localhost:5173",
+    "http://127.0.0.1",
+    "http://127.0.0.1:80",
+    "http://127.0.0.1:5173",
     "https://aircraft-history-explorer.vercel.app",
     "https://aircraft-history-explorer-abhishekshukla7423-6909s-projects.vercel.app"
 ]

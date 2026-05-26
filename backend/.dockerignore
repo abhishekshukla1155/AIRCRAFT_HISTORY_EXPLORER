@@ -1,0 +1,45 @@
+# ==========================================
+# Docker Ignore configuration for Backend
+# ==========================================
+
+# Ignore git metadata
+.git
+.gitignore
+
+# Ignore local virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore local database SQLite files
+db.sqlite3
+db.sqlite3-journal
+
+# Ignore local collected static and user-uploaded media files
+staticfiles/
+media/
+
+# Ignore local environments files containing secrets
+.env
+.env.*
+
+# Ignore IDE and editor configurations
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Ignore documentation and Docker instructions
+Dockerfile
+docker-compose.yml
+README.md
